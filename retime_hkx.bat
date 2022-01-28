@@ -1,0 +1,1 @@
+@powershell -NoProfile -NoExit -File "%~dpn0.ps1" %*
