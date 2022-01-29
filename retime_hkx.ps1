@@ -1,7 +1,7 @@
 #Requires -Version 3
 
 $script_path = "$(Split-Path $MyInvocation.MyCommand.Path)"
-$factor = 1.5
+$scale_factor = 1.5
 
 # Check dependencies
 if (-not (Get-Command java -ErrorAction SilentlyContinue)) {
@@ -42,7 +42,7 @@ foreach ($a in $args) {
     }
     $duration = Select-Xml -Xml $xml_content -XPath "/hkpackfile/hksection/hkobject[@class='hkaSplineCompressedAnimation']/hkparam[@name='duration']"
     $duration_secs = [double]::Parse($duration.Node."#text")
-    $duration.Node."#text" = [string]($duration_secs * $factor)
+    $duration.Node."#text" = [string]($duration_secs * $scale_factor)
     $details.Add([PSCustomObject]@{    
             Name = "duration"
             Old  = [string]$duration_secs
@@ -53,7 +53,7 @@ foreach ($a in $args) {
         $time_string = $p.Node.SelectSingleNode("child::hkparam[@name='time']")."#text"
         $text_string = $p.Node.SelectSingleNode("child::hkparam[@name='text']")."#text"
         $time_secs = [double]::Parse($time_string)
-        $p.Node.SelectSingleNode("child::hkparam[@name='time']")."#text" = [string]($time_secs * $factor)
+        $p.Node.SelectSingleNode("child::hkparam[@name='time']")."#text" = [string]($time_secs * $scale_factor)
         $details.Add([PSCustomObject]@{
                 Name = $text_string
                 Old  = $time_string

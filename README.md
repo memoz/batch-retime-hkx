@@ -5,7 +5,7 @@ PowerShell wrapper around hkxpack-cli.jar to easily multiply animation timings b
 2. Put `hkxpack-cli.jar` together with `retime_hkx.bat` and `retime_hkx.ps1` from this repository in the same folder;
 3. Drag hkx files onto `retime_hkx.bat` or run `retime_hkx.ps1` from PowerShell with hkx files as arguments.
 
-The scale factor is hardcoded to 1.5 by default. Change `$factor = 1.5` if you want.
+The scale factor is hardcoded to 1.5 by default. Change `$scale_factor = 1.5` if you want.
 # Background
 Some Fallout 4 weapon mods on nexusmods.com don't come with proper first person power armor animations. They are either too fast or too slow. There are 2 ways to fix them:
 1. Redo those animations in your preferred 3D software;
